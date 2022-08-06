@@ -4,10 +4,11 @@
  */
 package com.repo.Repository.Controllers;
 
-import com.repo.Repository.Model.Equipacion;
 import com.repo.Repository.Model.Paises;
-import com.repo.Repository.Projections.EquipacionProjection;
-import com.repo.Repository.Services.EquipacionesService;
+import com.repo.Repository.Model.Palmares;
+import com.repo.Repository.Projections.PalmaresProjection;
+import com.repo.Repository.Services.PaisesService;
+import com.repo.Repository.Services.PalmaresService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,22 +24,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Elio Raymundo
  */
 @RestController
-@RequestMapping(value= "equipacion")
-public class EquipacionController {
-    
+@RequestMapping(value= "palmares")
+public class PalmaresController {
     @Autowired
-    private EquipacionesService equipacionesService;
+    private PalmaresService palmaresService;
     
-    @PostMapping(value = "/crear/equipacion")
-    public ResponseEntity<Equipacion> crearEquipacion(@RequestBody Equipacion pEquipacion) {
-        Equipacion equip = equipacionesService.createEquipacion(pEquipacion);
-        return ResponseEntity.status(HttpStatus.OK).body(equip);
+    @PostMapping(value = "/crear/palmares")
+    public ResponseEntity<Palmares> crearPalmares(@RequestBody Palmares pPalmares) {
+        Palmares p = palmaresService.createPalmares(pPalmares);
+        return ResponseEntity.status(HttpStatus.OK).body(p);
     }  
     
     @GetMapping(value = "/all")
-    public ResponseEntity<List<EquipacionProjection>> getAllEquipaciones() {
-        List<EquipacionProjection> lista = equipacionesService.getAllEquipaciones();
+    public ResponseEntity<List<PalmaresProjection>> getAllPalmares() {
+        List<PalmaresProjection> lista = palmaresService.getAllPalmares();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
     }    
+    
     
 }

@@ -5,8 +5,10 @@
 package com.repo.Repository.Services;
 
 import com.repo.Repository.Model.Equipacion;
+import com.repo.Repository.Projections.EquipacionProjection;
 import com.repo.Repository.Repositories.EquipacionRepository;
 import com.repo.Repository.Repositories.PaisesRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,15 @@ public class EquipacionesService {
      */
     public Equipacion createEquipacion(Equipacion pEquipacion){
         return equipacionRepository.save(pEquipacion);
+    }
+    
+    /**
+     * Metodo para obtener todos los paises
+     *
+     * @author Elio Raymundo
+     * @return lista de paises {@link Paises}
+     */
+    public List<EquipacionProjection> getAllEquipaciones() {
+        return (List<EquipacionProjection>) equipacionRepository.getAllEquipaciones();
     }
 }

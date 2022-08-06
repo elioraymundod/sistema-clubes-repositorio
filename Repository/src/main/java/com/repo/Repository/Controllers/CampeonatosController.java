@@ -4,10 +4,9 @@
  */
 package com.repo.Repository.Controllers;
 
-import com.repo.Repository.Model.Equipacion;
+import com.repo.Repository.Model.Campeonatos;
 import com.repo.Repository.Model.Paises;
-import com.repo.Repository.Projections.EquipacionProjection;
-import com.repo.Repository.Services.EquipacionesService;
+import com.repo.Repository.Services.CampeonatosService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,22 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Elio Raymundo
  */
 @RestController
-@RequestMapping(value= "equipacion")
-public class EquipacionController {
-    
+@RequestMapping(value= "campeonatos")
+public class CampeonatosController {
     @Autowired
-    private EquipacionesService equipacionesService;
+    private CampeonatosService campeonatosService;
     
-    @PostMapping(value = "/crear/equipacion")
-    public ResponseEntity<Equipacion> crearEquipacion(@RequestBody Equipacion pEquipacion) {
-        Equipacion equip = equipacionesService.createEquipacion(pEquipacion);
-        return ResponseEntity.status(HttpStatus.OK).body(equip);
+    @PostMapping(value = "/crear/campeonato")
+    public ResponseEntity<Campeonatos> crearCampeonato(@RequestBody Campeonatos pCampeonato) {
+        Campeonatos campeonato = campeonatosService.createCampeonato(pCampeonato);
+        return ResponseEntity.status(HttpStatus.OK).body(campeonato);
     }  
     
     @GetMapping(value = "/all")
-    public ResponseEntity<List<EquipacionProjection>> getAllEquipaciones() {
-        List<EquipacionProjection> lista = equipacionesService.getAllEquipaciones();
+    public ResponseEntity<List<Campeonatos>> getAllCampeonatos() {
+        List<Campeonatos> lista = campeonatosService.getAllCampeonatos();
         return ResponseEntity.status(HttpStatus.OK).body(lista);
-    }    
-    
+    }  
 }
